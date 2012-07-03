@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+	<!-- 系统架构、数据库连接 -->
+	<import resource="architectureContext.xml" />
+	<!-- shiro 安全框架  -->
+	<import resource="shiroContext.xml" />
+	<!-- Dao  数据访问对象层 -->
+	<import resource="repositoryContext.xml" />
+	<!-- Service 业务层 -->
+	<import resource="serviceContext.xml" />
+	
+	<!-- 注入获得ApplicationContext对象 -->
+	<bean id="applicationContextHelper" class="com.juapk.frame.helper.ApplicationContextHelper" />
+	
+	<!-- Spring 国际化  -->
+    <bean id="messageSource"  class="org.springframework.context.support.ResourceBundleMessageSource">
+ 		<property name="basename" value="messages"/>
+    </bean>
+    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver"/>
+</beans>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="com.juapk.domain.SoftTop">
+  	<cacheModel type="LRU" id="t_softtop-cache">
+    	<flushInterval minutes="10"/>
+    	<property name="size" value="1000"/>
+  	</cacheModel>
+  	
+  	<typeAlias alias="softtop" type="com.juapk.domain.SoftTop" />
+  	
+	<resultMap class="com.juapk.domain.SoftTop" id="get-all-softtop">
+		<result property="soft_top_id" column="soft_top_id" />
+		<result property="type" column="type" />
+	</resultMap>
+
+	<select id="getSoftTopByWhere" cacheModel="t_softtop-cache" resultMap="get-all-softtop" parameterClass="java.lang.String">
+		<![CDATA[select * from t_soft_top $value$]]>
+	</select>
+	
+</sqlMap>

@@ -1,0 +1,8 @@
+@charset "utf-8";
+/* CSS Document */
+#man_zone {height: 495px;width: 97%;border: 1px solid #B4C9C6;margin: 6px 0 0 0;background-color:#FFFFFF;padding: 10px;overflow: auto;}
+#man_zone table{background-color:#DBE6E3;}
+#man_zone table tr{background-color:#fff;}
+.pages a{ width:18px; height:18px; border:1px solid #9a9a9a;color:#343434; line-height:18px; text-align:center; display:inline-block; margin-right:9px;}
+.pages a.selected{background-color:#09C;color:#FFFFFF;}
+.pages .pre,.pages .next{width:47px;}

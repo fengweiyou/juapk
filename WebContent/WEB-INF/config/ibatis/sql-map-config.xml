@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+"http://www.ibatis.com/dtd/sql-map-config-2.dtd" >
+<sqlMapConfig>
+	<!--
+		cacheModelsEnabled="true" 允许缓存模式
+		lazyLoadingEnabled="true" 使用 lazy 缓存加载
+		useStatementNamespaces="true" 允许使用命名空间
+	-->
+	<settings cacheModelsEnabled="true" enhancementEnabled="true"
+		lazyLoadingEnabled="true"
+		maxRequests="32" maxSessions="10" maxTransactions="5"
+		useStatementNamespaces="true" />
+		
+	<!--  IBatis SqlMap   -->
+	<sqlMap resource="com/juapk/domain/Ad.xml" />
+	<sqlMap resource="com/juapk/domain/Soft.xml" />
+	<sqlMap resource="com/juapk/domain/SoftCommend.xml" />
+	<sqlMap resource="com/juapk/domain/SoftSort.xml" />
+	<sqlMap resource="com/juapk/domain/SoftTop.xml" />
+	<sqlMap resource="com/juapk/domain/Topic.xml" />
+	<sqlMap resource="com/juapk/domain/TopicSoft.xml" />
+	<sqlMap resource="com/juapk/domain/NavMenu.xml" />
+	<sqlMap resource="com/juapk/domain/TreeMenu.xml" />
+	
+	<!-- 权限管理 -->
+	<sqlMap resource="com/juapk/domain/User.xml" />
+	<sqlMap resource="com/juapk/domain/Role.xml" />
+</sqlMapConfig>

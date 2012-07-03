@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><templates><template autoinsert="false" context="constructorcomment_context" deleted="false" description="Comment for created constructors" enabled="true" id="org.eclipse.jdt.ui.text.codetemplates.constructorcomment" name="constructorcomment">
+/**
+ * 创建一个新的实例 ${enclosing_type}.
+ * ${tags}
+ */</template><template autoinsert="true" context="settercomment_context" deleted="false" description="Comment for setter method" enabled="true" id="org.eclipse.jdt.ui.text.codetemplates.settercomment" name="settercomment">/**
+ * @param ${param} the ${bare_field_name} to set
+ */</template><template autoinsert="false" context="methodcomment_context" deleted="false" description="Comment for non-overriding methods" enabled="true" id="org.eclipse.jdt.ui.text.codetemplates.methodcomment" name="methodcomment">/**&#13;
+ * ${enclosing_method}(这里用一句话描述这个方法的作用)&#13;
+ * TODO(这里描述这个方法适用条件 – 可选)&#13;
+ * TODO(这里描述这个方法的执行流程 – 可选)&#13;
+ * TODO(这里描述这个方法的使用方法 – 可选)&#13;
+ * TODO(这里描述这个方法的注意事项 – 可选)&#13;
+ * @param  name&#13;
+ * @return String    DOM对象&#13;
+ * @Exception 异常对象&#13;
+ * @since  V1.0&#13;
+*/</template><template autoinsert="true" context="delegatecomment_context" deleted="false" description="Comment for delegate methods" enabled="true" id="org.eclipse.jdt.ui.text.codetemplates.delegatecomment" name="delegatecomment">/**
+ * ${tags}
+ * ${see_to_target}
+ */</template><template autoinsert="false" context="filecomment_context" deleted="false" description="Comment for created Java files" enabled="true" id="org.eclipse.jdt.ui.text.codetemplates.filecomment" name="filecomment">/**
+ * 文件名：${file_name}
+ *
+ * 版本信息：
+ * 日期：${date}
+ * Copyright 足下 Corporation ${year} 
+ * 版权所有
+ *
+ */</template><template autoinsert="false" context="gettercomment_context" deleted="false" description="Comment for getter method" enabled="true" id="org.eclipse.jdt.ui.text.codetemplates.gettercomment" name="gettercomment">/**
+ * ${bare_field_name}
+ *
+ * @return  the ${bare_field_name}
+ * @since  V1.0
+*/
+</template><template autoinsert="true" context="overridecomment_context" deleted="false" description="Comment for overriding methods" enabled="true" id="org.eclipse.jdt.ui.text.codetemplates.overridecomment" name="overridecomment">/* (non-Javadoc)
+ * ${see_to_overridden}
+ */</template><template autoinsert="false" context="fieldcomment_context" deleted="false" description="Comment for fields" enabled="true" id="org.eclipse.jdt.ui.text.codetemplates.fieldcomment" name="fieldcomment">/**
+ * ${field}:${todo}（用一句话描述这个变量表示什么）
+ * @since Ver 1.1
+ */
+</template><template autoinsert="false" context="typecomment_context" deleted="false" description="Comment for created types" enabled="true" id="org.eclipse.jdt.ui.text.codetemplates.typecomment" name="typecomment">/**
+ * 
+ * 项目名称：${project_name}
+ * 类名称：${type_name}
+ * 类描述：
+ * 创建人：${user}
+ * 创建时间：${date} ${time}
+ * 修改人：${user}
+ * 修改时间：${date} ${time}
+ * 修改备注：
+ * @version v1.0
+ */</template></templates>

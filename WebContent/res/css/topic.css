@@ -1,0 +1,69 @@
+@charset "utf-8";
+/* CSS Document */
+.m_l{width:695px;  overflow:hidden;}
+.outbox{border:1px solid #d4d4d4; width:693px; background-color:#FFFFFF; overflow:hidden;}
+.bestgame{width:678px; margin:0 auto;height:165px;padding-top:15px; border-bottom:1px dashed #989898;}
+.gimg{margin-left:5px; margin-right:32px;width:161px; height:106px;}
+.gimg img{ width:161px; height:106px; padding:1px; border:1px solid #cccccc;}
+.ginfo{width:462px; }
+.ginfo h1{ font-size:16px; color:#cd0000;}
+.ginfo h1 a{color:#cd0000;}
+.ginfo h1 a:hover{color:#669900;}
+.ginfo h1,.ginfo h2{ text-align:center; margin-bottom:10px;}
+.ginfo h2{font-size:14px; font-weight:normal; color:#659a01;}
+.ginfo h2 a{ color:#659a01;}
+.ginfo p{ text-indent:24px; color:#666666; line-height:150%; overflow:hidden;}
+.tjlist{ padding:10px 0 0 10px; overflow:hidden; float:left; position:relative;}
+.tjlist li{width:114px; height:114px; margin-right:20px; position:relative; float:left; display:inline; margin-bottom:5px;}
+.tjlist li.selected{ background:url(../images/bg.png) no-repeat scroll transparent;}
+.icon{ width:48px; height:48px; padding:8px 33px;}
+.icon img{width:48px; height:48px;}
+.name h2{ color:#666666; line-height:16px; height:16px; text-align:center;  font-size:12px;}
+.star{ text-align:center; }
+.star img{width:64px; height:12px;}
+.selected .down{display:block;}
+.selected .star,.selected .downnum{ display:none;}
+.morezt{ text-align:right;height:40px; line-height:30px;padding-right:40px;}
+.morezt a{color:#666666;}
+.banner{ width:100%; overflow:hidden;}
+.banner1 img { display:block; width:159px; border: 1px solid #CCCCCC; height: 105px;padding: 1px; margin-right:12px;}
+.zjyylist{ background-color:#FFFFFF; border:1px solid #d4d4d4; border-top:none;position:relative; overflow:hidden; height:340px;}
+.title{ overflow:hidden;}
+.zjyylist .title ul li{ float:left; line-height:28px; height:28px; width:230px; background:url(../images/bg02.gif) repeat-x scroll transparent; text-align:center;}
+#zj{border-right:1px solid #d4d4d4;}
+#zj2{border-right:1px solid #d4d4d4;width:231px;}
+.zjyylist .title ul li.selected{ background:url(../images/bg05.png) repeat-x scroll transparent;}
+.imglist li{  position:absolute; top:27px; z-index:9999;width:15px; height:8px; padding:0; display:none; margin:0; background:url(../images/jtx.png) top center no-repeat scroll transparent; overflow:hidden;}
+.imglist li#yy1{ left:15%;}
+.imglist li#yy2{ left:50%;}
+.imglist li#yy3{left:82%;}
+.imglist li.selected{ display:block;}
+.des{width:685px; margin:0 5px; height:30px; line-height:30px; background-color:#fafafa; border-bottom:1px dashed #9a9a9a; color:#649900; text-align:center;}
+.m_r{width:240px; border:1px solid #d3d3d3; background-color:#FFFFFF;}
+.ztlist{ float:left;}
+.ztlist li{ height:39px; line-height:39px;padding:0 25px 0 15px; overflow:hidden; float:left;width:200px; border-bottom:1px solid #ebebeb;}
+.ztlist li.selected{ background-color:#fafafa;}
+.ztlist li a{ color:#5c5c5c; font-size:14px;  float:left;}
+.ztlist li a:hover{ color:#669900;}
+.ztlist li span{ color:#66b50c; float:right;}
+.HOT,.NEW{ color:#FFFFFF; font-size:10px; height:10px;  line-height:10px; padding:0 3px; margin-top:2px; font-family:Arial, Helvetica, sans-serif;}
+.HOT{  background-color:#fe0002;}
+.NEW{ background-color:#9bcc01;}
+#color1{ color:#5c8332;}
+.zjyylist .tjlist{ display:none;}
+.outboxs{width:100%; overflow:hidden; background-color:#FFFFFF;}
+.outboxs ul{ display:none;}
+.outboxs ul li{height:79px; border-bottom:1px solid #ebebeb;}
+.outboxs ul li.double{background-color:#fafafa;}
+.outboxs ul li .img{margin:10px 20px 0 18px; display:inline;}
+.outboxs ul li .img img{width:46px; height:46px;}
+.outboxs .info{ width:520px;padding-right:20px; height:53px;border-right:1px solid #ebebeb;margin-top:15px;margin-right:20px;}
+.top,.bot{height:24px; line-height:24px; width:100%;color:#999999; overflow:hidden; white-space:nowrap;}
+.top .name{ display:block; width:260px; overflow:ellipsis; white-space:nowrap;}
+.top .name a{margin-right:5px; color:#326500; font-size:14px; font-weight:bold;}
+.top .name a:hover{ color:#669900;}
+.top .dnum{ width:97px;display:block;color:#666666;}
+.top .star{width:130px;display:block;color:#666666;}
+.appdown{width:26px; height:26px; overflow:hidden; margin-top:29px;}
+.appdown a{ display:block; background:url(../images/common.png) -131px 0 scroll no-repeat transparent; width:26px; height:26px; text-indent:-9999px;}
+.appdown a:hover{ background-position: -131px -27px;}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoints version="2.0" 
+	xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime" >
+  <endpoint 
+  		name="HelloService" 
+  		implementation="com.juapk.controller.SoapController" 
+  		url-pattern="/json/hello" 
+  		binding="http://jsonplugin.googlecode.com/json/"/>
+  
+  <!-- OPTIONAL IF YOU ALSO LIKE TO USE SOAP  -->
+  			
+  <endpoint name="HelloServiceSOAP"
+		implementation="com.juapk.controller.SoapController"
+		binding="http://schemas.xmlsoap.org/wsdl/soap/http" url-pattern="/soap/hello" />
+</endpoints>

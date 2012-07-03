@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="com.juapk.domain.User">
+  	<cacheModel type="LRU" id="t_user-cache">
+    	<flushInterval minutes="10"/>
+    	<property name="size" value="1000"/>
+  	</cacheModel>
+  	
+	<typeAlias alias="t_user" type="com.juapk.domain.User" />
+
+	<select id="getUserByUserName" cacheModel="t_user-cache" resultClass="t_user" parameterClass="java.lang.String">
+		<![CDATA[select * from t_user where user_name = #user_name#]]>
+	</select>
+	
+</sqlMap>

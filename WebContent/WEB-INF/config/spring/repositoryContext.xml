@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd   http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd   http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd   http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.0.xsd   http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+	<!-- DAO配置  -->
+	<bean id="roleDAO" class="com.juapk.dao.impl.RoleDAOImpl" p:sqlMapClient-ref="sqlMapClient" />
+	<bean id="userDAO" class="com.juapk.dao.impl.UserDAOImpl" p:sqlMapClient-ref="sqlMapClient" />
+	<bean id="topicSoftDAO" class="com.juapk.dao.impl.TopicSoftDAOImpl" p:sqlMapClient-ref="sqlMapClient" />
+	<bean id="topicDAO" class="com.juapk.dao.impl.TopicDAOImpl" p:sqlMapClient-ref="sqlMapClient" />
+	<bean id="softTopDAO" class="com.juapk.dao.impl.SoftTopDAOImpl" p:sqlMapClient-ref="sqlMapClient" />
+	<bean id="softSortDAO" class="com.juapk.dao.impl.SoftSortDAOImpl" p:sqlMapClient-ref="sqlMapClient" />
+	<bean id="softCommendDAO" class="com.juapk.dao.impl.SoftCommendDAOImpl" p:sqlMapClient-ref="sqlMapClient" />
+	<bean id="softDAO" class="com.juapk.dao.impl.SoftDAOImpl" p:sqlMapClient-ref="sqlMapClient" />
+	<bean id="adDAO" class="com.juapk.dao.impl.AdDAOImpl" p:sqlMapClient-ref="sqlMapClient" />
+	<bean id="navMenuDAO" class="com.juapk.dao.impl.NavMenuDAOImpl" p:sqlMapClient-ref="sqlMapClient" />
+	<bean id="treeMenuDAO" class="com.juapk.dao.impl.TreeMenuDAOImpl" p:sqlMapClient-ref="sqlMapClient" />
+</beans>

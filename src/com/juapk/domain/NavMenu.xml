@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="com.juapk.domain.NavMenu">
+  	<cacheModel type="LRU" id="t_nav-menu">
+    	<flushInterval minutes="10"/>
+    	<property name="size" value="1000"/>
+  	</cacheModel>
+  	
+	<typeAlias alias="navMenu" type="com.juapk.domain.NavMenu" />
+
+	<select id="getNavMenuByWhere" cacheModel="t_nav-menu"  resultClass="navMenu" parameterClass="java.lang.String">
+		<![CDATA[select * from t_nav_menu $value$]]>
+	</select>
+
+</sqlMap>

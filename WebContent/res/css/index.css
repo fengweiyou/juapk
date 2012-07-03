@@ -1,0 +1,67 @@
+@charset "utf-8";
+/* CSS Document */
+.line1{ height:210px;}
+.outbox{width:695px; height:210px; overflow:hidden; position:relative;}
+.picbox{  width:695px;}
+.picbox li{ float:left;}
+.picbox li a img{ width:695px; height:210px;}
+.numbox{ position:absolute; right:30px; bottom:10px;}
+.numbox li{ float:left; width:16px; text-align:center; height:16px;  color:#969485; cursor:pointer; margin-right:6px; line-height:16px; position:relative;}
+.numbox li a{position:absolute; z-index:2; width:16px; text-align:center; height:16px;  color:#333333;line-height:16px; position:absolute; top:0; left:0; }
+.numbox li span{ background-color:#FFFFFF; opacity:0.6; border:1px solid #DEDEDE; display:block;width:16px;height:16px; position:absolute; top:0; left:0;z-index:1;filter: Alpha(opacity=60);}
+.numbox li.selected a{ color:#FFFFFF;}
+.numbox li.selected span{background-color:#458401; border:1px solid #7eec00; opacity:1;filter: Alpha(opacity=100);}
+.jptj{width:693px; height:515px; overflow:hidden; border:1px solid #d4d4d4; background-color:#FFFFFF;}
+.more{ line-height:26px; color:#999999; display:block;}
+.tjlist{ padding:10px 0 0 10px; overflow:hidden; float:left; position:relative; height:470px;}
+.tjlist li{width:114px; height:114px; margin-right:20px; position:relative; float:left; display:inline; margin-bottom:5px;}
+.tjlist li.selected{ background:url(../images/bg.png) no-repeat scroll transparent;}
+.icon{ width:48px; height:48px; padding:8px 33px;}
+.icon img{width:48px; height:48px;}
+.name h2{ color:#666666; line-height:16px; height:16px; text-align:center;  font-size:12px;}
+.name a:hover h2{ text-decoration:underline;}
+.star{ text-align:center; padding:5px;}
+.star img{width:64px; height:12px;}
+.selected .down{display:block;}
+.selected .star{ display:none;}
+.down{ width:50px; height:20px; position:absolute; left:32px;bottom:10px; display:none;}
+.down#s_down{left:160px; bottom:15px;}
+.down a{ display:inline-block; width:50px; height:20px; background:url(../images/common.png) -80px 0 scroll no-repeat transparent; color:#ffffff; text-align:center; line-height:20px;}
+.hotline{ width:238px; overflow:hidden; border:1px solid #d4d4d4;border-top:none;}
+.titlebar{ height:28px;}
+.titlebar ul li{ float:left; width:119px; background:url(../images/bg02.gif) repeat-x scroll transparent; text-align:center; cursor:pointer; color:#666666;font-size:14px;height:28px; line-height:28px;}
+.titlebar ul li.selected{background:url(../images/bg03.gif) repeat-x scroll transparent;}
+.titlebar ul li#yy{width:118px; border-right:1px solid #d4d4d4;}
+.yylist{padding:0 8px; background-color:#FFFFFF; float:left; display:none;}
+.yylist li,.zslist li{ height:49px; border-bottom:1px solid #ebebeb; line-height:49px; cursor:pointer; position:relative; overflow:hidden;width:100%; padding:0; margin:0; float:left;}
+{ display:none;}
+.yylist li.selected .down{ display:block;}
+.yylist li.morebtn{height:37px; line-height:37px; text-indent:64px;}
+.img{width:50px; height:36px; }
+.img img{width:36px; height:36px;padding-top:8px;}
+.yyname a,.downnum,.yylist li.morebtn a{ color:#858585;}
+.yyname{width:95px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+.yyname h2{ font-size:12px;}
+.downnum{width:75px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+.banner1{ margin-right:13px;}
+.banner1 img{width:159px;}
+.banner1 img,.banner2 img{ border:1px solid #cccccc; padding:1px;height:105px;}
+.banner2 img{ width:235px;}
+.zs{border:1px solid #d4d4d4;width:340px; overflow:hidden; margin-right:10px; background-color:#FFFFFF;}
+.zs ul{padding:5px 10px;width:318px;}
+#zs_down{left:265px; bottom:15px;}
+#zsstar{ width:64px;padding-top:20px;}
+.zslist{ float:left; overflow:hidden;}
+.titlebar ul li#date { border-right: 1px solid #D4D4D4; width:80px;}
+.titlebar ul li#week { border-right: 1px solid #D4D4D4; width:78px;}
+.titlebar ul li#all {width:78px;}
+.pt{padding-top:5px; padding-bottom:5px;}
+#flinks{ width:945px; height:80px; border:1px solid #e1e1e1; margin-top:10px;}
+#flinks span.linkt{ float:left; font-weight:bold; color:#414141; padding-left:8px;  }
+#flinks span.yewu{ float:right; font-size:12px; font-weight:normal;}
+#flinks ul{ text-align:left;}
+#flinks ul li{ float:left; display:inline; margin-left:8px; margin-top:5px;}
+#flinks a:link, #flinks a:active, #flinks a:visited{color:#333}
+#flinks a:hover{ background:#62A80C; color:#FFF}
+#flinks b a:link, #flinks b a:active, #flinks b a:visited{color:#f60}
+#flinks b a:hover{ background:#f60; color:#FFF}

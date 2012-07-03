@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 3.2//EN"
+ "http://tuckey.org/res/dtds/urlrewrite3.2.dtd">
+<!-- ==================================================================
+ 		URL地址过滤、重命名配置 。
+     ================================================================== -->
+<urlrewrite>
+
+	<!-- 主页进入 -->
+	<rule>
+		<from>/index.html</from>
+		<to>/index.do</to>
+	</rule>
+	
+	<!-- 软件类型 ： 1、应用2、游戏 -->	
+	<rule>
+		<from>/sort_([0-9]+)_1.html</from>
+		<to>/softList.do?softType=$1</to>
+	</rule>
+	<!-- 软件信息 -->	
+	<rule>
+		<from>/soft_([0-9]+).html</from>
+		<to>/soft.do?softId=$1</to>
+	</rule>
+	<!-- 软件列表 -->	
+	<rule>
+		<from>/soft_([0-9]+)_([0-9]+).html</from>
+		<to>/softList.do?softType=$1&amp;offset=$2</to>
+	</rule>
+	<!-- 专题  -->	
+	<rule>
+		<from>/topic.html</from>
+		<to>/topic.do</to>
+	</rule>
+	<!-- 专题列表  -->
+	<rule>
+		<from>/topic_([0-9]+).html</from>
+		<to>/topicList.do?topicId=$1</to>
+	</rule>		
+	<!-- 后台登入 -->
+	<rule>
+		<from>/adminLogin.html</from>
+		<to>/s/invalidLogin.do</to>
+	</rule>
+</urlrewrite>

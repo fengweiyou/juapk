@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="com.juapk.domain.SoftCommend">
+  	<cacheModel type="LRU" id="t_softcommend-cache">
+    	<flushInterval minutes="10"/>
+    	<property name="size" value="1000"/>
+  	</cacheModel>
+	<typeAlias alias="softcommend" type="com.juapk.domain.SoftCommend" />
+
+	<resultMap class="com.juapk.domain.SoftCommend" id="get-all-softcommend">
+		<result property="soft_commend_id" column="soft_commend_id" />
+		<result property="soft_id" column="soft_id" />
+		<result property="user_id" column="user_id" />
+		<result property="level" column="level" />
+		<result property="state" column="state" />
+		<result property="commend_date" column="commend_date" />
+	</resultMap>
+	
+	<select id="getSoftCommendByWhere" cacheModel="t_softcommend-cache" resultClass="softcommend" parameterClass="java.lang.String">
+		<![CDATA[select * from t_soft_commend $value$]]>
+	</select>
+	
+	<select id="getSoftCommendCountByWhere" cacheModel="t_softcommend-cache" parameterClass="java.lang.String" resultClass="java.lang.Integer">
+		<![CDATA[select count(*) as value from t_soft_commend $value$]]>
+	</select>
+	
+</sqlMap>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="Pragma" content="no-cache">
+		<meta http-equiv="Expires" content="-1">
+		<title>jQuery Stepy - A Wizard Plugin</title>
+		<link type="text/css" rel="stylesheet" href="css/jquery.stepy.css" />
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquery.stepy.min.js"></script>
+	</head>
+	<body>
+		<form id="default">
+			<fieldset title="Step 1">
+				<legend>description one</legend>
+				<label>User:</label> <input type="text" value="wbotelhos" size="40" disabled="disabled" />
+				<label>E-mail:</label> <input type="text" size="40" />
+				<label>Password:</label> <input type="password" size="40" />
+			</fieldset>
+			<fieldset title="Step 2">
+				<legend>description two</legend>
+				<label>Nick Name:</label> <input type="text"size="30" />
+				<label>Bio:</label> <textarea rows="5" cols="60"></textarea>
+			</fieldset>
+			<input type="submit" class="finish" value="Finish!" />
+		</form>
+		<script type="text/javascript">
+			$(function() {
+				$('#default').stepy();
+			});
+		</script>
+	</body>
+</html>

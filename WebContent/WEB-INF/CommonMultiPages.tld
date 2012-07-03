@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.1//EN"
+  "http://java.sun.com/j2ee/dtds/web-jsptaglibrary_1_1.dtd">
+<!-- ==================================================================
+ 		TAGLIB 分页标签
+     ================================================================== -->
+<taglib>
+	<tlibversion>1.0</tlibversion>
+	<jspversion>1.1</jspversion>
+	<shortname>CommonMultiPages</shortname>
+	<uri>/WEB-INF/CommonMultiPages.tld</uri>
+	<info></info>
+	<tag>
+		<name>pager</name>
+		<tagclass>com.juapk.frame.taglib.CommonMPageTag</tagclass>
+		<info></info>
+		<attribute>
+			<name>var</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	<tag>
+		<name>prev</name>
+		<tagclass>com.juapk.frame.taglib.CommonPrevTag</tagclass>
+		<info></info>
+		<attribute>
+			<name>name</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>styleClass</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+	</tag>
+	<tag>
+		<name>next</name>
+		<tagclass>com.juapk.frame.taglib.CommonNextTag</tagclass>
+		<info></info>
+		<attribute>
+			<name>name</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>styleClass</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+	</tag>
+	<tag>
+		<name>index</name>
+		<tagclass>com.juapk.frame.taglib.CommonIndexTag</tagclass>
+		<info></info>
+		<attribute>
+			<name>styleClass</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+	</tag>
+</taglib>

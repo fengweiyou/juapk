@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="com.juapk.domain.TopicSoft">
+  	<cacheModel type="LRU" id="t_topicsoft-cache">
+    	<flushInterval minutes="10"/>
+    	<property name="size" value="1000"/>
+  	</cacheModel>
+  	
+  	<typeAlias alias="topicsoft" type="com.juapk.domain.TopicSoft" />
+  	
+	<resultMap class="com.juapk.domain.TopicSoft" id="get-all-topicsoft">
+		<result property="id" column="id" />
+	</resultMap>
+	
+	<select id="getTopicSoftByWhere" cacheModel="t_topicsoft-cache" resultClass="topicsoft" parameterClass="java.lang.String">
+		<![CDATA[select * from t_topic_soft $value$]]>
+	</select>
+	
+	<select id="getTopicSoftCountByWhere" cacheModel="t_topicsoft-cache" parameterClass="java.lang.String" resultClass="java.lang.Integer">
+		<![CDATA[select count(*) as value from t_topic_soft $value$]]>
+	</select>
+	
+	<select id="getTopicSoftByQueryItem" cacheModel="t_topicsoft-cache" resultClass="topicsoft" parameterClass="com.juapk.frame.common.QueryItem">
+		<![CDATA[select * from t_topic_soft $sql$ limit #offset#,#pageSize#]]>
+	</select>
+	
+</sqlMap>

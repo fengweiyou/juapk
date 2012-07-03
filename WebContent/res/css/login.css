@@ -1,0 +1,44 @@
+@charset "utf-8";
+/* CSS Document */
+.mainbox{ width:943px; overflow:hidden; border:1px solid #d7d8da; background-color:#FFFFFF; margin:0 auto 10px auto;}
+.m_l{ border-right:1px solid #ececec;margin:35px 0  0 75px;width:395px; display:inline; }
+.out{width:100%;padding-bottom:30px; overflow:hidden;}
+.input{width:100%; height:31px; line-height:31px;}
+.input #xx{ color:#fe0000;}
+.input{color:#343434;}
+.tab{width:70px; text-align:right;margin-right:18px; line-height:30px; height:30px; display:inline;}
+.ltxt{height:18px; line-height:18px; padding:3px; border:1px solid #b9babc; color:#666666; font-family:"瀹嬩綋"; font-size:12px; background-color:#f2fcfe;width:208px; margin-top:3px;}
+.txt .onfocurs{border:2px solid #efc87d; background-color:#ffffd9;height:18px; line-height:18px; padding:3px;color:#666666; font-family:"瀹嬩綋"; font-size:12px;width:208px; margin-top:3px; }
+.jg{ height:30px; line-height:30px; padding-left:98px; color:#999999;}
+.getpwd{ margin-left:10px;}
+.change{padding-top:30px; padding-left:10px;}
+.codebox{margin-left:98px; display:inline; margin-bottom:10px;}
+.getpwd a,.change a{ text-decoration:underline; color:#6b9b00;}
+.getpwd a:hover,.m_l .jg a:hover{ color:#669900;}
+.logbtn{ margin:30px 0 30px 98px;}
+.logbtn a{width:98px; height:31px; line-height:31px; display:block; color:#FFFFFF; background:url(../images/common.png) -158px 0 no-repeat scroll transparent; text-align:center;font-size:14px;}
+.logbtn a:hover { background-position:-158px -31px;text-decoration:none;}
+.jg a{color:#5f9900; text-decoration:underline; font-weight:bold; font-size:14px;}
+.m_r{ overflow:hidden;width:465px;}
+.m_r ul{padding:40px 0 0 79px;width:378px; float:left;}
+.m_r ul li{width:100%; float:left; margin-bottom:15px;}
+.m_r ul li .limg img{width:55px; height:55px; padding:5px; border:1px solid #f0f0f0;}
+.m_r ul li .info{ width:270px; padding-left:20px;}
+.m_r ul li .info h1{color:#018be4; font-size:14px;height:26px;line-height:26px; overflow:hidden;}
+.m_r ul li .info p{color:#676767; line-height:150%;}
+.tk{ padding-left:98px; height:30px; line-height:30px; color:#333333;}
+.tk a{ color:#649b01;}
+.tab span{height:30px; line-height:30px;}
+.btn{margin:25px 0 35px 75px;}
+.btn a{width:99px; height:32px; line-height:30px; color:#FFFFFF; font-weight:bold; font-size:14px; background:url(../images/common.png) -257px 0 no-repeat scroll transparent; display:inline-block; text-align:center;}
+.btn a:hover{ background-position:-257px -32px;text-decoration:none; }
+.txt1{ line-height:30px; height:30px; color:#343434; font-size:14px; font-weight:bold; margin:45px 0 0 75px;}
+.outbox{padding:20px;}
+.outbox p{ line-height:200%; margin-bottom:30px;}
+.zy{ font-size:14px; font-weight:bold; color:#333333;}
+.zy a{ color:#99cc00; text-decoration:underline;}
+.kfimg{ vertical-align:middle; margin-right:20px;}
+.hz{margin-bottom:30px;}
+.hz a{ color:#333333;}
+.hz h3{margin-bottom:20px; }
+.hz p{margin-bottom:20px;}

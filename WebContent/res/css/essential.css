@@ -1,0 +1,27 @@
+@charset "utf-8";
+/* CSS Document */
+.m_l{width:945px;  overflow:hidden;}
+.outbox{border:1px solid #d4d4d4; width:943px; background-color:#FFFFFF; overflow:hidden;}
+.tjlist{ padding:10px; overflow:hidden; float:left; position:relative;}
+.morezt{ text-align:right;height:40px; line-height:30px;padding-right:40px;}
+.morezt a{color:#666666;}
+p,ul,li{margin:0;padding:0;}
+ol,ul{list-style:none;}
+img,fieldset{border:0;}
+.fl{float:left;}
+.fr{float:right;}
+a{color:#000000;}
+a:link{text-decoration:none;}
+a:visited{text-decoration:none;}
+a:hover{text-decoration:underline;}
+a:active{text-decoration:none;}
+/*魔星高照*/
+.content_1{background:#eef3f5 url('../th_img/imgx.png') no-repeat right 0px;margin-top:10px;height:208px;}
+.mo_stat{margin-top:30px;margin-left:0px;width:460px;margin-right:33px;float:left;}
+.mo_stat_tit{background-position:-384px 0px;}
+.mo_list{clear:both;float:left;width:100%;position:relative;}
+.mo_list li{background:#fff;width:50px;height:50px;padding:1px 0 0 1px;float:left;font-size:0;}
+.mo_list_hov{height:50px;background:#68b700;padding:2px;color:#fff;width:50px;}
+.mo_list_hov div{background:#fff;}
+.mo_list_hov p{float:right;width:140px;line-height:16px;overflow:hidden;} 
+.mo_hov1 p{text-align:right;margin-right:10px;display:inline;}

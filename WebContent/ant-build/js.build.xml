@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<project name="uploader" default="minify-css">
+	<!-- ====================================================================== 
+	      May 02, 2012  js css 压缩  @author:HuBin <juapk@sina.com>
+	      
+	      JS CSS ..  *.min.js *.min.css 
+	     ====================================================================== -->
+    <description>uploader Build File</description>
+    <!--当前文件目录路径-->
+    <dirname property="current.dir" file="${ant.file.uploader}"/>
+    <!--配置文件路径-->
+    <property file="build.properties"/>
+    <property name="uploader.dir" location="${current.dir}/../uploader/"/>
+    <!--css路径-->
+    <property name="css.path" location="${uploader.dir}/uploader.css"/>
+    <!--yuicompressor程序路径-->
+    <property name="yuicompressor.path" location="${current.dir}/yuicompressor/yuicompressor-2.4.7.jar"/>
+    <property name="closure.path" location="${current.dir}/closure-compiler/compiler.jar"/>
+    <!--压缩css-->
+    <target name="minify-css">
+        <apply executable="java" verbose="true" dest="${uploader.dir}/../"   failonerror="true" parallel="false">
+            <fileset dir="${uploader.dir}" includes="uploader.css"/>
+            <arg line="-jar"/>
+            <arg path="${yuicompressor.path}"/>
+            <arg line="--charset gbk"/>
+            <arg value="--type"/>
+            <arg value="css"/>
+            <arg value="-o"/>
+            <targetfile/>
+            <mapper type="glob" from="*.css" to="*-min.css"/>
+        </apply>
+    </target>
+    <!--压缩js-->
+    <target name="minify-js">
+        <apply executable="java" dest="${uploader.dir}/../">
+            <fileset dir="${uploader.dir}" includes="*.js"/>
+            <arg line="-jar"/>
+            <arg path="${yuicompressor.path}"/>
+            <arg value="-o"/>
+            <targetfile/>
+            <mapper type="glob" from="*.js" to="*-min.js"/>
+        </apply>
+    </target>
+    <target name="closure" depends="concat,minify-js-closure">
+
+    </target>
+    <!--合并js-->
+    <target name="concat">
+        <concat destfile="${uploader.dir}/../uploader.source.js">
+            <path path="${uploader.dir}/base.js"/>
+            <path path="${uploader.dir}/render.js"/>
+            <path path="${uploader.dir}/renderUploader.js"/>
+        </concat>
+    </target>
+    <!--使用closure压缩js-->
+    <target name="minify-js-closure">
+        <apply executable="java" verbose="true" dest="${uploader.dir}/../" failonerror="true" parallel="false">
+            <fileset dir="${uploader.dir}/../" includes="**/*.js"/>
+            <arg line="-jar"/>
+            <arg path="${closure.path}"/>
+            <arg line="--charset gbk"/>
+            <arg value="--warning_level"/>
+            <arg value="QUIET"/>
+            <arg value="--js"/>
+            <srcfile/>
+            <arg value="--js_output_file"/>
+            <targetfile/>
+            <mapper type="regexp" from="^(.*)\.source\.js$" to="\1-min.js"/>
+        </apply>
+    </target>
+</project>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!-- realm -->
+    <bean id="myRealm" class="com.juapk.frame.security.shiro.realm.MyRealm" />
+    <!-- securityManager -->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="realm" ref="myRealm" />
+    </bean>
+    <!-- management -->
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />
+    <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <property name="staticMethod" value="org.apache.shiro.SecurityUtils.setSecurityManager" />
+        <property name="arguments" ref="securityManager" />
+    </bean>
+    <!-- annotation -->
+    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor" />
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <property name="securityManager" ref="securityManager" />
+    </bean>
+	<!-- =========================================================
+		anon 匿名访问 ：1、登入  /login = anon 2、资源文件 /res/* = anon  3、避开Shiro访问地址 /avoid/* = anon 匿名访问
+		authc 表示所有用户对应用系统的任何访问都要经过 auth 认证，对于没有认证的用户的访问会重定向到登录界面；
+		========================================================= -->
+	<bean id="shiroFilter"
+	      class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager" />
+		<!-- /s/* 拦截、登入 -->
+ 		<property name="loginUrl" value="/s/invalidLogin.do" />
+ 		<!-- 成功登入  -->
+		<property name="successUrl" value="/s/adminIndex.do" />
+		<!-- 未授权  -->
+		<property name="unauthorizedUrl" value="/s/unauthorized.do" />
+		<!-- 过滤器链定义 -->
+		<property name="filterChainDefinitions">
+			<value>
+	            /login = anon 
+                /res/* = anon 
+                /avoid/* = anon 
+	            /user/** = authc 
+	            /role/edit/** = perms[role:edit] 
+	            /role/save = perms[role:edit] 
+	            /role/list = perms[role:view] 
+                /** = authc 
+        	</value>
+		</property>
+	</bean>
+</beans>

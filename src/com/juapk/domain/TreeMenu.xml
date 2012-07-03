@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="com.juapk.domain.TreeMenu">
+  	<cacheModel type="LRU" id="t_tree-menu">
+    	<flushInterval minutes="10"/>
+    	<property name="size" value="1000"/>
+  	</cacheModel>
+  	
+	<typeAlias alias="treeMenu" type="com.juapk.domain.TreeMenu" />
+
+	<select id="getTreeMenuByWhere" cacheModel="t_tree-menu" resultClass="treeMenu" parameterClass="java.lang.String">
+		<![CDATA[select * from t_tree_menu $value$]]>
+	</select>
+
+</sqlMap>

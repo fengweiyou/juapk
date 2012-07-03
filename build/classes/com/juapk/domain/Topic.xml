@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="com.juapk.domain.Topic">
+  	<cacheModel type="LRU" id="t_topic-cache">
+    	<flushInterval minutes="10"/>
+    	<property name="size" value="1000"/>
+  	</cacheModel>
+  	
+  	<typeAlias alias="topic" type="com.juapk.domain.Topic" />
+  	
+	<resultMap class="com.juapk.domain.Topic" id="get-all-topic">
+		<result property="topic_id" column="topic_id" />
+		<result property="title" column="title" />
+		<result property="sub_title" column="sub_title" />
+		<result property="image" column="image" />
+		<result property="details" column="details" />
+		<result property="location" column="location" />
+		<result property="state" column="state" />
+	</resultMap>
+
+	<select id="getTopicByWhere" cacheModel="t_topic-cache" resultClass="topic" parameterClass="java.lang.String">
+		<![CDATA[select * from t_topic $value$]]>
+	</select>
+	
+	<select id="getTopicByQueryItem" cacheModel="t_topic-cache" resultClass="topic" parameterClass="com.juapk.frame.common.QueryItem">
+		<![CDATA[select * from t_topic $sql$ limit #offset#,#pageSize#]]>
+	</select>
+	
+	<select id="getTopicCountByWhere" cacheModel="t_topic-cache" parameterClass="java.lang.String" resultClass="java.lang.Integer">
+		<![CDATA[select count(*) as value from t_topic $value$]]>
+	</select>
+	
+</sqlMap>

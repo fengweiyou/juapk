@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="juapk" default="build-juapk.war" basedir=".">
+<!-- ====================================================================== 
+     May 02, 2012  juapk.war @author:HuBin <juapk@sina.com>
+      
+	  详细说明(1).project 标签属性：
+	   	 		    name：Ant 项目的名称. default：默认执行的动作 
+	   				baseidr：根目录的位置，"."表示当前位置 property：属性是让用户提供自定义的变量
+	   		(2).target 目标动作 ：
+	   				warfile：其中war 表示打war 包，jar表示打jar包
+	 使用方法：
+	 		 选择Run菜单 ，再选择 Run ，再选择External Tools ，出现 External Tools Configurations 操作界面 ，
+	 		最后 ，在 Ant Build 选择 juapk 项目的 build.xml ，在右侧 Main 标签  Base Directory 输入 ${workspace_loc:/juapk}
+	 		再选择 apply ，再点击run就可以运行ant项目了 ，
+	  		成功! ! ecilpse 工作空间的juapk 项目下生成 juapk.war包  。
+     ====================================================================== -->
+ 	<property name="app.dir" value="." />
+    <property name="web.dir" value="${app.dir}/WebContent" />
+ 	<!-- 打war包-->
+ 	<target name="build-juapk.war" description="构建Web应用程序war包">
+   		<war warfile="juapk.war" webxml="${web.dir}/WEB-INF/web.xml">
+       		<fileset dir="${web.dir}" />
+   		</war>
+ 	</target>
+</project>

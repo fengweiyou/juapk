@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="com.juapk.domain.Soft">
+  	<cacheModel type="LRU" id="t_soft-cache">
+    	<flushInterval minutes="10"/>
+    	<property name="size" value="1000"/>
+  	</cacheModel>
+  	
+  	<typeAlias alias="soft" type="com.juapk.domain.Soft" />
+  	
+	<resultMap class="com.juapk.domain.Soft" id="get-all-soft">
+		<result property="soft_id" column="soft_id" />
+		<result property="soft_type" column="soft_type" />
+		<result property="soft_sort_id" column="soft_sort_id" />
+		<result property="gold_coin" column="gold_coin" />
+		<result property="grade" column="grade" />
+		<result property="cn_name" column="cn_name" />
+		<result property="en_name" column="en_name" />
+		<result property="soft_version" column="soft_version" />
+		<result property="author" column="author" />
+		<result property="details" column="details" />
+		<result property="image_a" column="image_a" />
+		<result property="image_b" column="image_b" />
+		<result property="image_c" column="image_c" />
+		<result property="image_d" column="image_d" />
+		<result property="image_e" column="image_e" />
+		<result property="icon" column="icon" />
+		<result property="package_name" column="package_name" />
+		<result property="package_size" column="package_size" />
+		<result property="down_url" column="down_url" />
+		<result property="down_amount" column="down_amount" />
+		<result property="barcode" column="barcode" />
+		<result property="upload_date" column="upload_date" />
+	</resultMap>
+	
+	<insert id="insert" parameterClass="com.juapk.domain.Soft">
+	    <![CDATA[insert into t_soft 
+	    	(soft_id,soft_type,soft_sort_id,gold_coin,grade,cn_name,en_name,soft_version,author,details,image_a,image_b,
+	    	 image_c,image_d,image_e,icon,package_name,package_size,down_url,down_amount,barcode,upload_date) 
+			 values 
+			(#soft_id:VARCHAR#,#soft_type:NUMERIC#,#soft_sort_id:VARCHAR#,#gold_coin:NUMERIC#,#grade:NUMERIC#,#cn_name:VARCHAR#,
+			 #en_name:VARCHAR#,#soft_version:VARCHAR#,#author:VARCHAR#,#details:VARCHAR#,#image_a:VARCHAR#,
+			 #image_b:VARCHAR#,#image_c:VARCHAR#,#image_d:VARCHAR#,#image_e:VARCHAR#,#icon:VARCHAR#,#package_name:VARCHAR#,
+			 #package_size:VARCHAR#,#down_url:VARCHAR#,#down_amount:NUMERIC#,#barcode:VARCHAR#,#upload_date:TIMESTAMP#)
+		]]>
+	</insert>
+	
+	<select id="getSoftByWhere" cacheModel="t_soft-cache" resultClass="soft" parameterClass="java.lang.String">
+		<![CDATA[select * from t_soft $value$]]>
+	</select>
+
+	<select id="getSoftByQueryItem" cacheModel="t_soft-cache" resultClass="soft" parameterClass="com.juapk.frame.common.QueryItem">
+		<![CDATA[select * from t_soft $sql$ limit #offset#,#pageSize#]]>
+	</select>
+
+	<select id="getSoftCountByWhere" cacheModel="t_soft-cache" parameterClass="java.lang.String" resultClass="java.lang.Integer">
+		<![CDATA[select count(*) as value from t_soft $value$]]>
+	</select>
+	
+	<!-- Top -->
+	<select id="getSoftTopListByType" cacheModel="t_soft-cache" resultClass="soft" parameterClass="java.lang.Integer">
+		<![CDATA[select a.* from t_soft a,(select b.soft_id from t_soft_top b where b.type = $value$ limit 0,10) c where a.soft_id = c.soft_id]]>
+	</select>
+	
+ 	<!-- 推荐 -->
+ 	<select id="getSoftCommendListByWhere" cacheModel="t_soft-cache" resultClass="soft" parameterClass="java.lang.String">
+		<![CDATA[select a.* from t_soft a,(select soft_id from t_soft_commend $value$) c where a.soft_id = c.soft_id]]>
+	</select>
+	
+	<select id="getSoftCommendListByQueryItem" cacheModel="t_soft-cache" resultClass="soft" parameterClass="com.juapk.frame.common.QueryItem">
+	    <![CDATA[select a.* from t_soft a,(select soft_id from t_soft_commend $sql$ limit #offset#,#pageSize#) c where a.soft_id = c.soft_id]]>
+	</select>
+	
+	<!-- 专题 -->
+	<select id="getSoftTopicListByWhere" cacheModel="t_soft-cache" resultClass="soft" parameterClass="java.lang.String">
+	    <![CDATA[select a.* from t_soft a,(select b.soft_id from t_topic_soft b $value$) c where a.soft_id = c.soft_id]]>
+	</select>
+			
+	<select id="getSoftTopicListByQueryItem" cacheModel="t_soft-cache" resultClass="soft" parameterClass="com.juapk.frame.common.QueryItem">
+	    <![CDATA[select a.* from t_soft a,(select soft_id from t_topic_soft $sql$ limit #offset#,#pageSize#) c where a.soft_id = c.soft_id]]>
+	</select>
+ 	<!-- 
+ 		同步下载量
+ 		update soft a set a.down_amount = (select (b.web_amount+b.phone_amount) 
+ 		from soft_down b where a.a.soft_id = b.soft_id )
+ 	 -->
+</sqlMap>

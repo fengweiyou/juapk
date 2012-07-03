@@ -1,0 +1,37 @@
+@charset "utf-8";
+/* CSS Document */
+.m_l{width:695px; border:1px solid #d4d4d4; overflow:hidden;}
+.pl{margin-right:20px;}
+.pl a{ color:#323232;}
+.pl a.selected{ font-weight:bold;}
+ .top .name a:hover{color:#669900;}
+.outbox{width:100%; overflow:hidden; background-color:#FFFFFF;}
+.outbox ul{ display:none;}
+.outbox ul li{height:79px; border-bottom:1px solid #ebebeb;}
+.outbox ul li.double{background-color:#fafafa;}
+.outbox ul li .img{margin:10px 20px 0 18px; display:inline;}
+.outbox ul li .img img{width:46px; height:46px;}
+.outbox .info{ width:520px;padding-right:20px; height:53px;border-right:1px solid #ebebeb;margin-top:15px;margin-right:20px;}
+.top,.bot{height:24px; line-height:24px; width:100%;color:#999999; overflow:hidden; white-space:nowrap;}
+.top .name{ display:block; width:260px;}
+.top .name a{margin-right:5px; color:#326500; font-size:14px; font-weight:bold;}
+.top .dnum{ width:97px;display:block;color:#666666;}
+.top .star{width:130px;display:block;color:#666666; text-align:center;}
+.appdown{width:26px; height:26px; overflow:hidden; margin-top:29px;}
+.appdown a{ display:block; background:url(../images/common.png) -131px 0 scroll no-repeat transparent; width:26px; height:26px; text-indent:-9999px;}
+.outbox ul li.pages{height:30px; width:100%; text-align:center; line-height:30px;border-bottom:0; background:url(../images/bg04.png) repeat-x scroll transparent;}
+.appdown a:hover{ background-position: -131px -27px;}
+.outbox ul li.pages span{ margin:0 auto; text-align:center;width:100%;}
+.pages a{ width:18px; height:18px; border:1px solid #9a9a9a;color:#343434; line-height:18px; text-align:center; display:inline-block; margin-right:9px;}
+.pages a.selected{background-color:#98cc00;color:#FFFFFF;}
+.pages .pre,.pages .next{width:47px;}
+.m_r{width:240px;  overflow:hidden;}
+.classify{ background-color:100%; background-color:#FFFFFF;border:1px solid #d4d4d4;}
+.classify ul{padding:0 10px;}
+.classify ul li #name{width:150px; font-weight:bold; color:#858585; overflow:hidden; display:inline-block;}
+.classify ul li a,.classify ul li{color:#858585;}
+.classify ul li a:hover{ color:#669900;}
+.classify ul li #count{width:60px; overflow:hidden; display:inline-block;}
+.classify ul li{height:39px; line-height:39px; border-bottom:1px solid #ebebeb;}
+
+

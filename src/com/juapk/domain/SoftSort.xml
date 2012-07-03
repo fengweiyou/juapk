@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="com.juapk.domain.SoftSort">
+  	<cacheModel type="LRU" id="t_softsort-cache">
+    	<flushInterval seconds="1" />
+    	<property name="size" value="1000"/>
+  	</cacheModel>
+	<typeAlias alias="softsort" type="com.juapk.domain.SoftSort" />
+
+	<resultMap class="com.juapk.domain.SoftSort" id="get-all-softsort">
+		<result property="soft_sort_id" column="soft_sort_id" />
+		<result property="soft_type" column="soft_type" />
+		<result property="name" column="name" />
+		<result property="amount" column="amount" />
+		<result property="location" column="location" />
+		<result property="state" column="state" />
+	</resultMap>
+	
+	<insert id="insert" parameterClass="com.juapk.domain.SoftSort">
+	    <![CDATA[insert into t_soft_sort 
+	    	(soft_sort_id,soft_type,name,location,state,amount) 
+			 values 
+			(#soft_sort_id:VARCHAR#,#soft_type:NUMERIC#,#name:VARCHAR#,#location:NUMERIC#,#state:NUMERIC#,#amount:NUMERIC#)
+		]]>
+	</insert>
+	
+	<delete id="deleteByPrimaryKey" parameterClass="java.lang.String">
+		<![CDATA[delete from t_soft_sort where soft_sort_id = #soft_sort_id#]]>
+	</delete>
+	
+	<select id="getSoftSortByWhere" cacheModel="t_softsort-cache" resultClass="softsort" parameterClass="java.lang.String">
+		<![CDATA[select * from t_soft_sort $value$]]>
+	</select>
+	
+	<select id="getSoftSortByQueryItem" cacheModel="t_softsort-cache" resultClass="softsort" parameterClass="com.juapk.frame.common.QueryItem">
+	    <![CDATA[select * from t_soft_sort $sql$ limit #offset#,#pageSize#]]>
+	</select>
+	
+	<select id="getSoftSortCountByWhere" cacheModel="t_softsort-cache" parameterClass="java.lang.String" resultClass="java.lang.Integer">
+		<![CDATA[select count(*) as value from t_soft_sort $value$]]>
+	</select>
+	
+</sqlMap>

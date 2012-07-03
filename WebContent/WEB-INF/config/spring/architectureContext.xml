@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd   
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd   
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd   
+	http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.0.xsd   
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+	
+	<context:property-placeholder location="WEB-INF/config/ibatis/database.properties" />
+		
+	<bean id="data_source" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close" p:driverClassName="${jdbc.driverClassName}"
+		p:url="${jdbc.url}" p:username="${jdbc.username}" p:password="${jdbc.password}"
+		p:maxActive="10" p:maxIdle="10">
+	</bean>
+
+	<!-- 事务管理 -->
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager"
+		p:dataSource-ref="data_source">
+
+	</bean>
+	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean"
+		p:dataSource-ref="data_source" p:configLocation="WEB-INF/config/ibatis/sql-map-config.xml">
+	</bean>
+
+	<bean id="transactionInterceptor"
+		class="org.springframework.transaction.interceptor.TransactionInterceptor"
+		p:transactionManager-ref="transactionManager">
+		<property name="transactionAttributes">
+			<props>
+				<prop key="select*">PROPAGATION_NOT_SUPPORTED</prop>
+				<prop key="update*">PROPAGATION_NOT_SUPPORTED</prop>
+				<prop key="query*">PROPAGATION_NOT_SUPPORTED</prop>
+				<prop key="insert">
+					PROPAGATION_REQUIRED,-Exception
+                </prop>
+				<prop key="delete*">
+					PROPAGATION_REQUIRED,-Exception
+                </prop>
+				<prop key="*">PROPAGATION_NOT_SUPPORTED</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="transactionProxyTemplate" abstract="true"
+		class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="interceptorNames">
+			<list>
+				<value>transactionInterceptor</value>
+			</list>
+		</property>
+	</bean>
+</beans>

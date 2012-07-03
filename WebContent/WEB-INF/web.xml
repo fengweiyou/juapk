@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+  <display-name>juapk</display-name>
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>/WEB-INF/config/spring/applicationContext.xml</param-value>
+  </context-param>
+  <!-- ==================================================================
+		URL 地址过滤
+	   ================================================================== -->
+  <filter>
+	<filter-name>UrlRewriteFilter</filter-name>
+	<filter-class>org.tuckey.web.filters.urlrewrite.UrlRewriteFilter</filter-class>
+	<!-- 设置定时检查配置文件的时间以供重新加载的时间，
+		  该参数值为整型，0为每次都检查，-1为从不检查，默认为-1 -->
+	<init-param>
+		<param-name>confReloadCheckInterval</param-name>
+		<param-value>60</param-value>
+	</init-param>
+	<!-- 设置配置文件的路径 -->
+	<init-param>
+		<param-name>confPath</param-name>
+		<param-value>/WEB-INF/urlrewrite.xml</param-value>
+	</init-param>
+	<!-- 设置日志的等级 -->
+	<init-param>
+		<param-name>logLevel</param-name>
+		<param-value>DEBUG</param-value>
+	</init-param>
+	<!-- 设置状态目录，必须以/开始，默认为/rewrite-status -->
+	<init-param>
+		<param-name>statusPath</param-name>
+		<param-value>/status</param-value>
+	</init-param>
+	<!-- 是否允许状态页面，默认为true -->
+	<init-param>
+		<param-name>statusEnabled</param-name>
+		<param-value>true</param-value>
+	</init-param>
+	<!-- 设置host 的列表，可以使用通配符，多个host 用逗号隔开 -->
+	<init-param>
+		<param-name>statusEnabledOnHosts</param-name>
+		<param-value>localhost, dev.*.myco.com, *.uat.mycom.com</param-value>
+	</init-param>
+	<!--
+		defaults to false. use mod_rewrite style configuration file (if this
+		is true and confPath is not specified confPath will be set to
+		/WEB-INF/.htaccess)
+	-->
+	<init-param>
+		<param-name>modRewriteConf</param-name>
+		<param-value>false</param-value>
+	</init-param>
+	<!--
+		load mod_rewrite style configuration from this parameter's value.
+		note, Setting this parameter will mean that all other conf parameters
+		are ignored. <init-param> <param-name>modRewriteConfText</param-name>
+		<param-value> RewriteRule ^/~([^/]+)/?(.*) /u/$1/$2 [R] RewriteRule
+		^/([uge])/([^/]+)$ /$1/$2/ [R] </param-value> </init-param>
+	-->
+	<!--
+		defaults to false. allow conf file to be set by calling
+		/rewrite-status/?conf=/WEB-INF/urlrewrite2.xml designed to be used
+		for testing only <init-param>
+		<param-name>allowConfSwapViaHttp</param-name>
+		<param-value>false</param-value> </init-param>
+	-->
+   </filter>
+   <filter-mapping>
+	 <filter-name>UrlRewriteFilter</filter-name>
+	 <url-pattern>/*</url-pattern>
+	 <dispatcher>REQUEST</dispatcher>
+	 <dispatcher>FORWARD</dispatcher>
+   </filter-mapping>
+   <!-- ==================================================================
+ 		 WebService过滤
+        ================================================================== -->
+   <listener>
+	 <listener-class>
+	 com.sun.xml.ws.transport.http.servlet.WSServletContextListener
+	 </listener-class>
+   </listener>
+   <servlet>
+	 <servlet-name>JAX-WS-Service</servlet-name>
+	 <servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
+	 <load-on-startup>2</load-on-startup>
+   </servlet>
+   <servlet-mapping>
+	 <servlet-name>JAX-WS-Service</servlet-name>
+	 <url-pattern>/json/*</url-pattern>
+   </servlet-mapping>
+   <!-- OPTIONAL IF YOU ALSO LIKE TO USE SOAP -->
+   <servlet-mapping>
+	 <servlet-name>JAX-WS-Service</servlet-name>
+	 <url-pattern>/soap/*</url-pattern>
+   </servlet-mapping>
+   <!-- ==================================================================
+ 		JSP页面字符过滤
+       ================================================================== -->
+   <filter>
+     <filter-name>CharacterEncodingFilter</filter-name>
+     <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+     <init-param>
+       <param-name>encoding</param-name>
+       <param-value>UTF-8</param-value>
+     </init-param>
+     <init-param>
+       <param-name>forceEncoding</param-name>
+       <param-value>true</param-value>
+     </init-param>
+   </filter>
+   <filter-mapping>
+     <filter-name>CharacterEncodingFilter</filter-name>
+     <url-pattern>/*</url-pattern>
+   </filter-mapping>
+   <!-- ==================================================================
+     	 KAPTCHA 验证码
+     	================================================================== -->
+   <servlet>
+		<servlet-name>Kaptcha</servlet-name>
+		<servlet-class>com.google.code.kaptcha.servlet.KaptchaServlet</servlet-class>
+		<init-param>
+			<param-name>kaptcha.border</param-name>
+			<param-value>yes</param-value>
+		</init-param>
+		<init-param>
+			<param-name>kaptcha.textproducer.font.color</param-name>
+			<param-value>black</param-value>
+		</init-param>
+		<init-param>
+			<param-name>kaptcha.textproducer.char.space</param-name>
+			<param-value>5</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Kaptcha</servlet-name>
+		<url-pattern>/auth/captcha.jpg</url-pattern>
+	</servlet-mapping>
+	<login-config>
+		<auth-method>BASIC</auth-method>
+	</login-config>
+   <!-- ==================================================================
+         SHIRO 安全过滤
+        ================================================================== -->
+   <filter>
+	 <filter-name>shiroFilter</filter-name>
+	 <filter-class>
+		org.springframework.web.filter.DelegatingFilterProxy
+	 </filter-class>
+	 <init-param>
+		<param-name>targetFilterLifecycle</param-name>
+		<param-value>true</param-value>
+	 </init-param>
+   </filter>
+   <filter-mapping>
+	 <filter-name>shiroFilter</filter-name>
+	 <url-pattern>/s/*</url-pattern>
+   </filter-mapping>
+   <listener>
+     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+   </listener>
+   <listener>
+     <listener-class>org.springframework.web.context.ContextCleanupListener</listener-class>
+   </listener>
+   <servlet>
+     <servlet-name>juapk</servlet-name>
+     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+     <init-param>
+       <param-name>contextConfigLocation</param-name>
+       <param-value>/WEB-INF/config/spring/webmvc-config.xml</param-value>
+     </init-param>
+     <load-on-startup>1</load-on-startup>
+   </servlet>
+   <!-- ==================================================================
+                          通过Filter 实现简单的防盗链
+        ================================================================== -->
+   <!--     
+   <filter>
+     <filter-name>securityChain</filter-name>
+     <filter-class>com.juapk.frame.filter.SecurityChainFilter</filter-class>
+   </filter>
+   <filter-mapping>
+     <filter-name>securityChain</filter-name>
+     <url-pattern>/*</url-pattern>
+   </filter-mapping>
+   -->
+   <!-- 拦截.do请求 -->
+   <servlet-mapping>
+     <servlet-name>juapk</servlet-name>
+     <url-pattern>*.do</url-pattern>
+   </servlet-mapping>
+   <!-- session保持30秒 -->
+   <session-config>
+     <session-timeout>30</session-timeout>
+   </session-config>
+   <!-- ==================================================================
+       	 欢迎页面
+        ================================================================== -->
+   <welcome-file-list>
+      <welcome-file>index.jsp</welcome-file>
+   </welcome-file-list>
+   <!-- 配置错误处理 -->
+    <error-page>
+       <error-code>404</error-code>
+       <location>/error404.jsp</location>
+    </error-page>
+    <error-page>
+       <error-code>505</error-code>                             
+       <location>/error.jsp</location>
+    </error-page>
+    <!-- 配置异常处理 -->
+    <error-page>
+       <exception-type>javax.servle.ServletException</exception-type>
+       <location>/error.jsp</location>
+    </error-page>
+    <error-page>
+       <exception-type>java.lang.NullPointerException</exception-type>
+       <location>/error.jsp</location>
+    </error-page>
+   <!-- ==================================================================
+       	 分页标签
+        ================================================================== -->
+   <jsp-config>
+	 <taglib>
+		<taglib-uri>/WEB-INF/CommonMultiPages.tld</taglib-uri>
+		<taglib-location>/WEB-INF/CommonMultiPages.tld</taglib-location>
+	 </taglib>
+   </jsp-config>
+</web-app>
